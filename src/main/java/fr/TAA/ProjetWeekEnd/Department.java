@@ -1,7 +1,9 @@
 package fr.TAA.ProjetWeekEnd;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 
 @Entity
@@ -32,6 +34,7 @@ public class Department {
 		this.id = id;
 	}
 
+	@Column(nullable = false)
 	public String getName() {
 		return name;
 	}
@@ -40,6 +43,7 @@ public class Department {
 		this.name = name;
 	}
 
+	@ManyToOne
 	public Region getRegionId() {
 		return regionId;
 	}
