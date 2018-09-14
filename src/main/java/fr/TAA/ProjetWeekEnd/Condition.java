@@ -1,5 +1,7 @@
 package fr.TAA.ProjetWeekEnd;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -10,12 +12,11 @@ public class Condition {
 	private long identifier;
 	private double minTemperature;
 	private double minPluviometry;
-	private double minSunshine;
 	private double minWindCondition;
 	private double maxWindCondition;
 	private double maxTemperature;
 	private double maxPluviometry;
-	private double maxSunshine;
+	private List<Sunshine> toleratedSunshine;
 	
 	@Id
 	public long getIdentifier() {
@@ -37,13 +38,6 @@ public class Condition {
 	}
 	public void setMinPluviometry(double minPluviometry) {
 		this.minPluviometry = minPluviometry;
-	}
-	
-	public double getMinSunshine() {
-		return minSunshine;
-	}
-	public void setMinSunshine(double minSunshine) {
-		this.minSunshine = minSunshine;
 	}
 	
 	public double getMinWindCondition() {
@@ -75,11 +69,11 @@ public class Condition {
 	}
 	
 	@Column(nullable = false)
-	public double getMaxSunshine() {
-		return maxSunshine;
+	public List<Sunshine> getToleratedSunshine() {
+		return toleratedSunshine;
 	}
-	public void setMaxSunshine(double maxSunshine) {
-		this.maxSunshine = maxSunshine;
+	public void setToleratedSunshine(List<Sunshine> toleratedSunshine) {
+		this.toleratedSunshine = toleratedSunshine;
 	}
 
 
