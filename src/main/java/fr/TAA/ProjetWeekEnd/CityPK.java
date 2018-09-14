@@ -1,5 +1,6 @@
 package fr.TAA.ProjetWeekEnd;
 
+import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
 @Embeddable
@@ -17,6 +18,7 @@ public class CityPK {
 	String name;
 	int postalCode;
 	
+	@Column(nullable = false)
 	public String getName() {
 		return name;
 	}
@@ -25,6 +27,7 @@ public class CityPK {
 		this.name = name;
 	}
 	
+	@Column(nullable = false)
 	public int getPostalCode() {
 		return postalCode;
 	}
