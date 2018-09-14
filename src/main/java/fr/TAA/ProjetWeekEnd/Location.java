@@ -3,8 +3,8 @@ package fr.TAA.ProjetWeekEnd;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.EmbeddedId;
 
+@Entity
 public class Location {
 	
 	public Location(Long id, City city, Department department, Region region) {
@@ -59,20 +59,6 @@ public class Location {
 
 	public void setRegion(Region region) {
 		this.region = region;
-	}
-}
-
-@Entity
-public class City() {
-	@EmbeddedId
-	private CityPK cityPK;
-	
-	public void City() {
-		
-	}
-	
-	public void City(String name, int PostalCode) {
-		cityPk = new CityPK(name, PostalCode);
 	}
 }
 
