@@ -16,5 +16,11 @@ public interface AbstractDAO {
 	public List<Object> findByName(String name);
 	
 	public Boolean exist(Object o);
+	
+	public Boolean add(Object o);
+	
+	public Boolean delete(Object o);
+	
+	public Boolean update(Object o);
 		
 }
