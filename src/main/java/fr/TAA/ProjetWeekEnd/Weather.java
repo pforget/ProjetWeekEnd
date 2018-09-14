@@ -11,7 +11,7 @@ public class Weather {
 		
 	}
 	
-	public Weather(Long id, Temperature temperature, Wind wind, Sunshine sunshine) {
+	public Weather(Long id, Temperature temperature, WindForce wind, Sunshine sunshine) {
 		this.id = id;
 		this.temperature = temperature;
 		this.wind = wind;
@@ -22,7 +22,7 @@ public class Weather {
 
 	private Temperature temperature;
 	
-	private Wind wind;
+	private WindForce wind;
 	
 	private Sunshine sunshine;
 	
@@ -44,11 +44,11 @@ public class Weather {
 		this.temperature = temperature;
 	}
 
-	public Wind getWind() {
+	public WindForce getWind() {
 		return wind;
 	}
 
-	public void setWind(Wind wind) {
+	public void setWind(WindForce wind) {
 		this.wind = wind;
 	}
 
