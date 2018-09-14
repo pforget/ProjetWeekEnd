@@ -3,6 +3,7 @@ package fr.TAA.ProjetWeekEnd;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Location {
@@ -36,6 +37,7 @@ public class Location {
 		this.id = id;
 	}
 
+	@ManyToOne
 	public City getCity() {
 		return city;
 	}
@@ -44,6 +46,7 @@ public class Location {
 		this.city = city;
 	}
 
+	@ManyToOne
 	public Department getDepartment() {
 		return department;
 	}
@@ -52,6 +55,7 @@ public class Location {
 		this.department = department;
 	}
 
+	@ManyToOne
 	public Region getRegion() {
 		return region;
 	}
