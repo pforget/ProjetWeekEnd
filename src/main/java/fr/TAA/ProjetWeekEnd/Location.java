@@ -8,7 +8,6 @@ import javax.persistence.Id;
 public class Location {
 	
 	public Location(Long id, City city, Department department, Region region) {
-		super();
 		this.id = id;
 		this.city = city;
 		this.department = department;
