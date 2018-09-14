@@ -40,5 +40,17 @@ public class RegionDAO  implements AbstractDAO {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	public Boolean add(Object o) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	public Boolean delete(Object o) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	public Boolean update(Object o) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }
