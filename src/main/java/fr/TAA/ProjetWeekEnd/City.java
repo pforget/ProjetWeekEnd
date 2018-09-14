@@ -7,7 +7,7 @@ import javax.persistence.ManyToOne;
 @Entity
 public class City {
 	
-	public void City(String name, int PostalCode, Department departmentID) {
+	public City(String name, int PostalCode, Department departmentID) {
 		this.cityPK = new CityPK(name, PostalCode);
 		this.departmentID = departmentID;
 	}
@@ -18,7 +18,7 @@ public class City {
 	@ManyToOne
 	private Department departmentID;
 	
-	public void City() {
+	public City() {
 		
 	}
 	
