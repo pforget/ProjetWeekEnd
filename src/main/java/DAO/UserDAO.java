@@ -2,54 +2,86 @@ package DAO;
 
 import java.util.List;
 import org.hibernate.mapping.Map;
+import javax.persistence.EntityManager;
+import javax.persistence.Query;
 
 import fr.TAA.ProjetWeekEnd.EntityManagerHelper;
+import fr.TAA.ProjetWeekEnd.User;
 
-public class UserDAO  implements AbstractDAO {
+public class UserDAO implements AbstractDAO {
 
 	public UserDAO() {
-		super();
 		// TODO Auto-generated constructor stub
 	}
-	EntityManagerHelper manager;
-	public UserDAO(EntityManagerHelper manager) {
+
+	EntityManager manager;
+
+	public UserDAO(EntityManager manager) {
 		this.manager = manager;
 	}
+
 	public long countAll(Map param) {
-		// TODO Auto-generated method stub
-		return 0;
+		String query = "select count (u) from User as u";
+		return (long) manager.createQuery(query).getFirstResult();
 	}
 
 	public List<Object> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		String query = "select u from User as u";
+		return manager.createQuery(query).getResultList();
 	}
 
-	public Object findByID(long id) {
-		// TODO Auto-generated method stub
-		return null;
+	public User findByID(long id) {
+		return manager.find(User.class, id);
 	}
 
 	public List<Object> findByName(String name) {
-		// TODO Auto-generated method stub
-		return null;
+		String query = "select u from User as u where u.name = :name";
+		return manager.createQuery(query).setParameter("name", name).getResultList();
+	}
+
+	public Boolean add(Object o) {
+		User u = (User) o;
+
+		manager.getTransaction().begin();
+		manager.persist(u);
+		manager.getTransaction().commit();
+
+		return true;
+	}
+
+	public Boolean delete(Object o) {
+		User u = (User) o;
+
+		manager.getTransaction().begin();
+		manager.remove(u);
+		manager.getTransaction().commit();
+
+		return true;
+	}
+
+	public Boolean update(Object o) {
+		User u = (User) o;
+		
+		User uOutOfDate =  findByID(u.getId());	
+		
+		 if(uOutOfDate != null) {		 
+			manager.getTransaction().begin();
+			uOutOfDate.setEmail(u.getEmail());
+			uOutOfDate.setFavoriteLocations(u.getFavoriteLocations());
+			uOutOfDate.setFavoriteSports(u.getFavoriteSports());
+			uOutOfDate.setName(u.getName());
+			uOutOfDate.setUsername(u.getUsername());
+			uOutOfDate.setPassword(u.getPassword());
+			manager.getTransaction().commit();
+			
+			return true;
+		 }		
+		
+		return false;
 	}
 
 	public Boolean exist(Object o) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	public Boolean add(Object o) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	public Boolean delete(Object o) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	public Boolean update(Object o) {
-		// TODO Auto-generated method stub
-		return null;
+		return (findByID(((User) o).getId()) != null);
 	}
 
 }

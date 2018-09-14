@@ -11,10 +11,13 @@ public class WeatherDAO  implements AbstractDAO {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
 	EntityManagerHelper manager;
+	
 	public WeatherDAO(EntityManagerHelper manager) {
 		this.manager = manager;
 	}
+	
 	public long countAll(Map param) {
 		// TODO Auto-generated method stub
 		return 0;
