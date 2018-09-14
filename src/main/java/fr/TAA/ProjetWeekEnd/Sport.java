@@ -1,5 +1,6 @@
 package fr.TAA.ProjetWeekEnd;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -29,6 +30,7 @@ public class Sport {
 		this.id = id;
 	}
 	
+	@Column(nullable = false)
 	public String getName() {
 		return name;
 	}
