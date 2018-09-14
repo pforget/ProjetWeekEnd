@@ -3,6 +3,7 @@ package fr.TAA.ProjetWeekEnd;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -22,6 +23,30 @@ public class User {
 	private String username;
 	private String password;
 	private String email;
+	
+    public User() {
+    }
+
+    @Id
+    @GeneratedValue
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+
+	@Column(nullable = false)
     public String getUsername() {
 		return username;
 	}
@@ -30,6 +55,7 @@ public class User {
 		this.username = username;
 	}
 
+	@Column(nullable = false)
 	public String getPassword() {
 		return password;
 	}
@@ -52,27 +78,7 @@ public class User {
     
     private List<Location> favoriteLocations;
 
-    public User() {
-    }
-
-    @Id
-    @GeneratedValue
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
+	
 	@OneToMany
 	public List<Sport> getFavoriteSports() {
 		return favoriteSports;
