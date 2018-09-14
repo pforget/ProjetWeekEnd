@@ -7,11 +7,25 @@ import javax.persistence.Id;
 @Entity
 public class Weather {
 	
+
+public enum Sunshine {
+
+	FortementEnsoleillé,
+	Ensoleillé,
+	NuageuxAvecEclaircissement,
+	FortementNuageux,
+	Pluvieux,
+	Neige,
+	Grêle,
+	Gel; 
+
+}
+	
 	public Weather() {
 		
 	}
 	
-	public Weather(Long id, Temperature temperature, WindForce wind, Sunshine sunshine) {
+	public Weather(Long id, float temperature, float wind, Sunshine sunshine) {
 		this.id = id;
 		this.temperature = temperature;
 		this.wind = wind;
@@ -20,9 +34,9 @@ public class Weather {
 
 	private Long id;
 
-	private Temperature temperature;
+	private float temperature;
 	
-	private WindForce wind;
+	private float wind;
 	
 	private Sunshine sunshine;
 	
@@ -36,19 +50,19 @@ public class Weather {
 		this.id = id;
 	}
 
-	public Temperature getTemperature() {
+	public float getTemperature() {
 		return temperature;
 	}
 
-	public void setTemperature(Temperature temperature) {
+	public void setTemperature(float temperature) {
 		this.temperature = temperature;
 	}
 
-	public WindForce getWind() {
+	public float getWind() {
 		return wind;
 	}
 
-	public void setWind(WindForce wind) {
+	public void setWind(float wind) {
 		this.wind = wind;
 	}
 
@@ -61,3 +75,4 @@ public class Weather {
 	}
 	
 }
+
