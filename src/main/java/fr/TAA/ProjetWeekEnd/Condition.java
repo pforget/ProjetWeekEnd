@@ -6,6 +6,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
+import fr.TAA.ProjetWeekEnd.Weather.Sunshine;
+
 @Entity
 public class Condition {
 	
