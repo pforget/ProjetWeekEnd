@@ -3,8 +3,18 @@ package DAO;
 import java.util.List;
 import org.hibernate.mapping.Map;
 
+import fr.TAA.ProjetWeekEnd.EntityManagerHelper;
+
 public class LocationDAO  implements AbstractDAO {
 
+	public LocationDAO() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	EntityManagerHelper manager;
+	public LocationDAO(EntityManagerHelper manager) {
+		this.manager = manager;
+	}
 	public long countAll(Map param) {
 		// TODO Auto-generated method stub
 		return 0;

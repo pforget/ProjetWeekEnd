@@ -3,8 +3,18 @@ package DAO;
 import java.util.List;
 import org.hibernate.mapping.Map;
 
+import fr.TAA.ProjetWeekEnd.EntityManagerHelper;
+
 public class WeatherDAO  implements AbstractDAO {
 
+	public WeatherDAO() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	EntityManagerHelper manager;
+	public WeatherDAO(EntityManagerHelper manager) {
+		this.manager = manager;
+	}
 	public long countAll(Map param) {
 		// TODO Auto-generated method stub
 		return 0;

@@ -1,11 +1,22 @@
 package DAO;
 
 import org.hibernate.mapping.Map;
+
+import fr.TAA.ProjetWeekEnd.EntityManagerHelper;
+
 import java.util.List;
 
 
 public class DepartmentDAO  implements AbstractDAO {
 
+	public DepartmentDAO() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	EntityManagerHelper manager;
+	public DepartmentDAO(EntityManagerHelper manager) {
+		this.manager = manager;
+	}
 	public long countAll(Map param) {
 		// TODO Auto-generated method stub
 		return 0;
