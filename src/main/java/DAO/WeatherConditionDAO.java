@@ -8,7 +8,6 @@ import javax.persistence.EntityManager;
 import org.hibernate.mapping.Map;
 
 import fr.TAA.ProjetWeekEnd.Condition;
-import fr.TAA.ProjetWeekEnd.User;
 import fr.TAA.ProjetWeekEnd.Weather.Sunshine;
 
 public class WeatherConditionDAO implements AbstractDAO {

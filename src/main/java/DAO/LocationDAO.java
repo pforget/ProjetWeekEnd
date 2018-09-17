@@ -59,6 +59,7 @@ public class LocationDAO  implements AbstractDAO {
 
 		return true;
 	}
+	
 	public Boolean update(Object o) {
 		Location l = (Location) o;
 		
