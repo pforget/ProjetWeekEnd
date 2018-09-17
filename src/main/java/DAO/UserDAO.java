@@ -5,7 +5,6 @@ import org.hibernate.mapping.Map;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
-import fr.TAA.ProjetWeekEnd.EntityManagerHelper;
 import fr.TAA.ProjetWeekEnd.User;
 
 public class UserDAO implements AbstractDAO {
