@@ -24,7 +24,7 @@ public class CityDAO implements AbstractDAO{
 	}
 
 	public Object findCity(String name, int postalCode) {
-		String query = "select c from City where c.name = :name and c.postalCode = :postalCode";
+		String query = "select c from City as c where c.name = :name and c.postalCode = :postalCode";
 		return (City) manager.createQuery(query)
 				.setParameter("name", name)
 				.setParameter("postalCode", postalCode)
@@ -32,7 +32,7 @@ public class CityDAO implements AbstractDAO{
 	}
 
 	public List<Object> findByName(String name) {
-		String query = "select c from City where c.name = :name";
+		String query = "select c from City as c where c.name = :name";
 		return manager.createQuery(query).setParameter("name", name).getResultList();
 	}
 
@@ -40,7 +40,7 @@ public class CityDAO implements AbstractDAO{
 		City city = (City) o;
 		String cityName = city.getName();
 		int postalCode = city.getPostalCode();
-		String query = "select count(c) from City where c.name = :name and c.postalCode = :postalCode";
+		String query = "select count(c) from City as c where c.name = :name and c.postalCode = :postalCode";
 		return (Long) manager.createQuery(query)
 				.setParameter("name", cityName)
 				.setParameter("postalCode", postalCode)
@@ -70,19 +70,16 @@ public class CityDAO implements AbstractDAO{
 	}
 
 	public Boolean update(Object o) {
-		
 		City c = (City) o;
-		
 		City cOutOfDate = (City) findCity(c.getName(), c.getPostalCode());
 		
 		manager.getTransaction().begin();
 		cOutOfDate.setDepartmentID(c.getDepartmentID());
 		manager.getTransaction().commit();
-				
+		
 		return true;
 	}
 
-	// Garde-t-on findByID dans AbstractDAO ?
 	public Object findByID(long id) {
 		// TODO Auto-generated method stub
 		return null;
