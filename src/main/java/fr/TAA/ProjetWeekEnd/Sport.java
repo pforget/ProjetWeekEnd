@@ -5,7 +5,7 @@ import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 
 enum level {Begginer,Advanced,Expert};
@@ -29,8 +29,7 @@ public class Sport {
 		this.name = name;
 	}
 
-	private String name;
-	private Long id;
+	private SportPK sportPK;
 	private boolean needwater;
 	private boolean needmountain;
 	private Condition WeatherCondition;
@@ -53,6 +52,31 @@ public class Sport {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public boolean isNeedwater() {
+		return needwater;
+	}
+
+	public void setNeedwater(boolean needwater) {
+		this.needwater = needwater;
+	}
+
+	public boolean isNeedmountain() {
+		return needmountain;
+	}
+
+	public void setNeedmountain(boolean needmountain) {
+		this.needmountain = needmountain;
+	}
+
+	@ManyToOne
+	public Condition getWeatherCondition() {
+		return WeatherCondition;
+	}
+
+	public void setWeatherCondition(Condition weatherCondition) {
+		WeatherCondition = weatherCondition;
 	}
 	
 
