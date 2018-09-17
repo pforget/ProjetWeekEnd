@@ -23,7 +23,10 @@ public class CityDAO implements AbstractDAO{
 		return (Long) manager.createQuery(query).getSingleResult();
 	}
 
-	public Object findCity(String name, int postalCode) {
+	public Object findByID(Object o) {
+		CityPK cityPK = (CityPK) o;
+		String name = cityPK.getName();
+		int postalCode = cityPK.getPostalCode();
 		String query = "select c from City as c where c.name = :name and c.postalCode = :postalCode";
 		return (City) manager.createQuery(query)
 				.setParameter("name", name)
@@ -71,20 +74,13 @@ public class CityDAO implements AbstractDAO{
 
 	public Boolean update(Object o) {
 		City c = (City) o;
-		City cOutOfDate = (City) findCity(c.getName(), c.getPostalCode());
+		City cOutOfDate = (City) findByID(c.getCityPK());
 		
 		manager.getTransaction().begin();
 		cOutOfDate.setDepartmentID(c.getDepartmentID());
 		manager.getTransaction().commit();
 		
 		return true;
-	}
-
-	public Object findByID(Object i) {
-		CityPK id = (CityPK) i;
-		
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 }

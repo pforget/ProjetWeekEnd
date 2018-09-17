@@ -25,6 +25,14 @@ public class City implements Serializable {
 
 	}
 
+	public CityPK getCityPK() {
+		return cityPK;
+	}
+	
+	public void setCityPK(CityPK cityPK) {
+		this.cityPK = cityPK;
+	}
+
 	public String getName() {
 		return cityPK.getName();
 	}
