@@ -31,6 +31,14 @@ public class Sport {
 		WeatherCondition = weatherCondition;
 	}
 	
+	public SportPK getSportPK() {
+		return sportPK;
+	}
+
+	public void setSportPK(SportPK sportPK) {
+		this.sportPK = sportPK;
+	}
+
 	public String getName() {
 		return sportPK.getName();
 	}

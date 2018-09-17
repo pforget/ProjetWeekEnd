@@ -28,25 +28,26 @@ public class SportDAO  implements AbstractDAO {
 	public List<Object> findAll() {
 		String query = "select s from Sport as s";
 		return manager.createQuery(query).getResultList();
-		
+
 	}
 
 	public Sport findByID(Object id) {
 		int iD = (Integer) id;
-		
+
 		return manager.find(Sport.class, iD);
-		
+
 	}
 
 	public List<Object> findByName(String name) {
 		String Query = "select s from Sport as s where s.name = :name";
 		return manager.createQuery(Query).setParameter("name", name).getResultList();
-		
+
 	}
 
 	public Boolean exist(Object o) {
-		return (findByID(((Sport) o).getId()) != null);
-		
+		Sport sport = (Sport) o;
+		return (findByID(sport.getSportPK()) != null);
+
 	}
 	public Boolean add(Object o) {
 		Sport s = (Sport) o;
@@ -67,20 +68,18 @@ public class SportDAO  implements AbstractDAO {
 	}
 	public Boolean update(Object o) {
 		Sport s = (Sport) o;
-		
-		Sport Sportu =  findByID(s.getId());
+
+		Sport Sportu =  findByID(s.getSportPK());
 		if(Sportu != null) {		 
 			manager.getTransaction().begin();
-			
-			
+
+
 			Sportu.setName(s.getName());
-			
+
 			manager.getTransaction().commit();
-		
-	}
-	
+
+		}
+
 		return true;
-	
-	
-}
+	}
 }
