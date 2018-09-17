@@ -15,8 +15,8 @@ public class CityPK {
 		
 	}
 
-	String name;
-	int postalCode;
+	private String name;
+	private int postalCode;
 	
 	@Column(nullable = false)
 	public String getName() {
