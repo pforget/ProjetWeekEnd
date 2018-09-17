@@ -3,6 +3,7 @@ package fr.TAA.ProjetWeekEnd;
 import java.util.List;
 
 import javax.persistence.Column;
+import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.ManyToOne;
@@ -12,46 +13,30 @@ enum level {Begginer,Advanced,Expert};
 @Entity
 public class Sport {
 	
-	public Sport() {
-		
-	}
-	
-	public Sport(String name, Long id, boolean needwater, boolean needmountain, Condition weatherCondition) {
-		super();
-		this.name = name;
-		this.id = id;
-		this.needwater = needwater;
-		this.needmountain = needmountain;
-		WeatherCondition = weatherCondition;
-	}
-
-	public Sport(String name) {
-		this.name = name;
-	}
-
+	@EmbeddedId
 	private SportPK sportPK;
+	
 	private boolean needwater;
 	private boolean needmountain;
 	private Condition WeatherCondition;
 	
-
-	@Id
-	@GeneratedValue
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
+	public Sport() {
+		
 	}
 	
-	@Column(nullable = false)
+	public Sport(String name, level level, boolean needwater, boolean needmountain, Condition weatherCondition) {
+		this.sportPK = new SportPK(name, level);
+		this.needwater = needwater;
+		this.needmountain = needmountain;
+		WeatherCondition = weatherCondition;
+	}
+	
 	public String getName() {
-		return name;
+		return sportPK.getName();
 	}
 
 	public void setName(String name) {
-		this.name = name;
+		sportPK.setName(name);
 	}
 
 	public boolean isNeedwater() {
@@ -78,6 +63,7 @@ public class Sport {
 	public void setWeatherCondition(Condition weatherCondition) {
 		WeatherCondition = weatherCondition;
 	}
+	
 	
 
 }

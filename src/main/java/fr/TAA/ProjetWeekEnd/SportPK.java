@@ -36,9 +36,5 @@ public class SportPK {
 	public void setLevel(level level) {
 		this.level = level;
 	}
-	
-	
-	
-	
 
 }
