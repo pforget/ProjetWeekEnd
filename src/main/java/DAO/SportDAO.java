@@ -1,9 +1,16 @@
 package DAO;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import javax.persistence.EntityManager;
+import javax.persistence.Query;
+
 import org.hibernate.mapping.Map;
 
-import fr.TAA.ProjetWeekEnd.EntityManagerHelper;
+
+import fr.TAA.ProjetWeekEnd.Sport;
+import fr.TAA.ProjetWeekEnd.User;
 
 public class SportDAO  implements AbstractDAO {
 
@@ -11,45 +18,69 @@ public class SportDAO  implements AbstractDAO {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	EntityManagerHelper manager;
-	public SportDAO(EntityManagerHelper manager) {
+	EntityManager manager;
+	public SportDAO(EntityManager manager) {
 		this.manager = manager;
 	}
 	public long countAll(Map param) {
-		// TODO Auto-generated method stub
-		return 0;
+		String Query= "select count (s) from Sport as s";
+		return (long) manager.createQuery(Query).getFirstResult();
 	}
 
 	public List<Object> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		String query = "select s from Sport as s";
+		return manager.createQuery(query).getResultList();
+		
 	}
 
-	public Object findByID(long id) {
-		// TODO Auto-generated method stub
-		return null;
+	public Sport findByID(long id) {
+		return manager.find(Sport.class, id);
+		
 	}
 
 	public List<Object> findByName(String name) {
-		// TODO Auto-generated method stub
-		return null;
+		String Query = "select s from Sport as s where s.name = :name";
+		return manager.createQuery(Query).setParameter("name", name).getResultList();
+		
 	}
 
 	public Boolean exist(Object o) {
-		// TODO Auto-generated method stub
-		return null;
+		return (findByID(((Sport) o).getId()) != null);
+		
 	}
 	public Boolean add(Object o) {
-		// TODO Auto-generated method stub
-		return null;
+		Sport s = (Sport) o;
+
+		manager.getTransaction().begin();
+		manager.persist(s);
+		manager.getTransaction().commit();
+		return true;
 	}
 	public Boolean delete(Object o) {
-		// TODO Auto-generated method stub
-		return null;
+		Sport s = (Sport) o;
+
+		manager.getTransaction().begin();
+		manager.remove(s);
+		manager.getTransaction().commit();
+
+		return true;
 	}
 	public Boolean update(Object o) {
-		// TODO Auto-generated method stub
-		return null;
+		Sport s = (Sport) o;
+		
+		Sport Sportu =  findByID(s.getId());
+		if(Sportu != null) {		 
+			manager.getTransaction().begin();
+			
+			Sportu.setLocations(s.getLocations());
+			Sportu.setName(s.getName());
+			
+			manager.getTransaction().commit();
+		
 	}
-
+	
+		return true;
+	
+	
+}
 }
