@@ -11,7 +11,7 @@ public interface AbstractDAO {
 	
 	public List<Object>findAll();
 	
-	public Object findByID(long id);
+	public Object findByID(Object id);
 	
 	public List<Object> findByName(String name);
 	

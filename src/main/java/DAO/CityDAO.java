@@ -80,7 +80,9 @@ public class CityDAO implements AbstractDAO{
 		return true;
 	}
 
-	public Object findByID(long id) {
+	public Object findByID(Object i) {
+		CityPK id = (CityPK) i;
+		
 		// TODO Auto-generated method stub
 		return null;
 	}
