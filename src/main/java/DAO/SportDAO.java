@@ -72,7 +72,7 @@ public class SportDAO  implements AbstractDAO {
 		if(Sportu != null) {		 
 			manager.getTransaction().begin();
 			
-			Sportu.setLocations(s.getLocations());
+			
 			Sportu.setName(s.getName());
 			
 			manager.getTransaction().commit();

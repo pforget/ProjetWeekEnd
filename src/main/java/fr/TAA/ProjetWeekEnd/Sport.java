@@ -1,5 +1,7 @@
 package fr.TAA.ProjetWeekEnd;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -17,7 +19,7 @@ public class Sport {
 	}
 
 	private String name;
-	
+	private List<Location> locations;
 	private Long id;
 
 	@Id
@@ -38,5 +40,6 @@ public class Sport {
 	public void setName(String name) {
 		this.name = name;
 	}
+	
 
 }
