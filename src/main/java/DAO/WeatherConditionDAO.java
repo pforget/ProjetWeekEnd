@@ -76,14 +76,9 @@ public class WeatherConditionDAO implements AbstractDAO {
 			cOld.setMaxTemperature(c.getMaxTemperature());
 			cOld.setMinTemperature(c.getMinTemperature());
 			cOld.setMaxWindCondition(c.getMaxWindCondition());
-			cOld.setMinWindCondition(c.getMinWindCondition());
-			ArrayList<Sunshine> copieTolerated = new ArrayList<Sunshine>();
-			ArrayList<Sunshine> toleratedSunshine = c.getToleratedSunshine();
-			for(int i=0; i<toleratedSunshine.size(); ++i) {
-				copieTolerated.add(toleratedSunshine.get(i));
-			}
+			cOld.setMinWindCondition(c.getMinWindCondition());		
 			
-			cOld.setToleratedSunshine(copieTolerated);
+			cOld.setToleratedSunshine((ArrayList<Sunshine>)  c.getToleratedSunshine().clone());
 			manager.getTransaction().commit();
 			
 			return true;
