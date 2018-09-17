@@ -9,7 +9,7 @@ import javax.persistence.OneToMany;
 @Entity
 public class Location {
 	
-	public Location(Long id, City city, Department department, Region region, Boolean hasWater,
+	public Location(int id, City city, Department department, Region region, Boolean hasWater,
 			Boolean hasMontagne) {
 		super();
 		this.id = id;
@@ -20,7 +20,7 @@ public class Location {
 		this.hasMontagne = hasMontagne;
 	}
 
-	private Long id;
+	private int id;
 	
 	private City city;
 	
@@ -40,11 +40,11 @@ public class Location {
 
 	@Id
 	@GeneratedValue
-	public Long getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 

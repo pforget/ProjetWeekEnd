@@ -25,14 +25,14 @@ public enum Sunshine {
 		
 	}
 	
-	public Weather(Long id, float temperature, float wind, Sunshine sunshine) {
+	public Weather(int id, float temperature, float wind, Sunshine sunshine) {
 		this.id = id;
 		this.temperature = temperature;
 		this.wind = wind;
 		this.sunshine = sunshine;
 	}
 
-	private Long id;
+	private int id;
 
 	private float temperature;
 	
@@ -42,11 +42,11 @@ public enum Sunshine {
 	
 	@Id
 	@GeneratedValue
-	public Long getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
