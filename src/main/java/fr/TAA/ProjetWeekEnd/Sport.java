@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
+
+enum level {Begginer,Advanced,Expert};
 @Entity
 public class Sport {
 	
@@ -14,13 +16,25 @@ public class Sport {
 		
 	}
 	
+	public Sport(String name, Long id, boolean needwater, boolean needmountain, Condition weatherCondition) {
+		super();
+		this.name = name;
+		this.id = id;
+		this.needwater = needwater;
+		this.needmountain = needmountain;
+		WeatherCondition = weatherCondition;
+	}
+
 	public Sport(String name) {
 		this.name = name;
 	}
 
 	private String name;
-	private List<Location> locations;
 	private Long id;
+	private boolean needwater;
+	private boolean needmountain;
+	private Condition WeatherCondition;
+	
 
 	@Id
 	@GeneratedValue
