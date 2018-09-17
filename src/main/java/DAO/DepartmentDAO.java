@@ -26,7 +26,8 @@ public class DepartmentDAO  implements AbstractDAO {
 		return (Long) manager.createQuery(query).getSingleResult();
 	}
 
-	public Object findByID(long id) {
+	public Object findByID(Object i) {
+		int id = (Integer) i;
 		String query = "select d from Department as d where d.id = :id";
 		return manager.createQuery(query).setParameter("id", id).getSingleResult();
 	}

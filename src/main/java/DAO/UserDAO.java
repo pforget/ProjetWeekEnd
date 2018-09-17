@@ -29,8 +29,10 @@ public class UserDAO implements AbstractDAO {
 		return manager.createQuery(query).getResultList();
 	}
 
-	public User findByID(long id) {
-		return manager.find(User.class, id);
+	public User findByID(Object id) {
+		int iD = (Integer) id;
+
+		return manager.find(User.class, iD);
 	}
 
 	public List<Object> findByName(String name) {
@@ -40,7 +42,7 @@ public class UserDAO implements AbstractDAO {
 
 	public Boolean add(Object o) {
 		User u = (User) o;
-
+		
 		manager.getTransaction().begin();
 		manager.persist(u);
 		manager.getTransaction().commit();

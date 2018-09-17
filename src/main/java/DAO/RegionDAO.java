@@ -29,8 +29,10 @@ public class RegionDAO  implements AbstractDAO {
 		return manager.createQuery(query).getResultList();
 	}
 
-	public Object findByID(long id) {
+	public Object findByID(Object id) {
 		// TODO Auto-generated method stub
+		String ID = (String) id; 
+		
 		return null;
 	}
 

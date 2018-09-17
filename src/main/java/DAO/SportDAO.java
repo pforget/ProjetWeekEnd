@@ -1,6 +1,5 @@
 package DAO;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -10,7 +9,6 @@ import org.hibernate.mapping.Map;
 
 
 import fr.TAA.ProjetWeekEnd.Sport;
-import fr.TAA.ProjetWeekEnd.User;
 
 public class SportDAO  implements AbstractDAO {
 
@@ -33,8 +31,10 @@ public class SportDAO  implements AbstractDAO {
 		
 	}
 
-	public Sport findByID(long id) {
-		return manager.find(Sport.class, id);
+	public Sport findByID(Object id) {
+		int iD = (Integer) id;
+		
+		return manager.find(Sport.class, iD);
 		
 	}
 

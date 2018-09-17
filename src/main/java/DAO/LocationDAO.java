@@ -30,8 +30,10 @@ public class LocationDAO  implements AbstractDAO {
 		return manager.createQuery(query).getResultList();
 	}
 
-	public Location findByID(long id) {
-		return manager.find(Location.class, id);
+	public Location findByID(Object id) {
+		int iD = (Integer) id;
+		
+		return manager.find(Location.class, iD);
 	}
 
 	public List<Object> findByName(String name) {

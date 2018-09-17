@@ -28,7 +28,7 @@ public class WeatherDAO  implements AbstractDAO {
 		return null;
 	}
 
-	public Object findByID(long id) {
+	public Object findByID(Object id) {
 		// TODO Auto-generated method stub
 		return null;
 	}

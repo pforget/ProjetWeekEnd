@@ -32,8 +32,10 @@ public class WeatherConditionDAO implements AbstractDAO {
 		return manager.createQuery(query).getResultList();
 	}
 
-	public Condition findByID(long id) {
-		return manager.find(Condition.class, id);
+	public Condition findByID(Object id) {
+		int iD = (Integer) id;
+
+		return manager.find(Condition.class, iD);
 	}
 
 	public List<Object> findByName(String name) {
