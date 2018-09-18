@@ -13,9 +13,10 @@ import java.util.List;
 
 import DAO.LocationDAO;
 import fr.TAA.ProjetWeekEnd.EntityManagerHelper;
+import fr.TAA.ProjetWeekEnd.Location;
 
 @Path("/locations")
-public class LocationService implements InterfaceService {
+public class LocationService {
 	
 	LocationDAO dao = new LocationDAO(EntityManagerHelper.getEntityManager());
 	
@@ -24,30 +25,30 @@ public class LocationService implements InterfaceService {
 	}
 
 	@POST
-	public Boolean create(Object o) {
-		return dao.add(o);
+	public Boolean create(Location c) {
+		return dao.add(c);
 	}
 
 	@DELETE
-	public Boolean remove(Object o) {
-		return dao.delete(o);
+	public Boolean remove(Location c) {
+		return dao.delete(c);
 	}
 
 	@PUT
-	public Boolean update(Object o) {
-		return dao.update(o);
+	public Boolean update(Location c) {
+		return dao.update(c);
 	}
 
 	@Path("/{id}")
 	@GET
 	@Produces({MediaType.APPLICATION_JSON})
-	public Object findById(@PathParam("id") Object o) {
-		return dao.findByID(o);
+	public Location findById(@PathParam("id") int id) {
+		return dao.findByID(id);
 	}
 
 	@GET
 	@Produces({MediaType.APPLICATION_JSON})
-	public List<Object> findAll() {
+	public List<Location> findAll() {
 		return dao.findAll();
 	}
 

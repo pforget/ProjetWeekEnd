@@ -2,31 +2,32 @@ package Services;
 
 import java.util.List;
 
-public class RegionService implements InterfaceService {
+import DAO.RegionDAO;
+import fr.TAA.ProjetWeekEnd.EntityManagerHelper;
+import fr.TAA.ProjetWeekEnd.Region;
 
-	public Boolean create(Object o) {
-		// TODO Auto-generated method stub
-		return null;
+public class RegionService {
+	
+	RegionDAO dao = new RegionDAO(EntityManagerHelper.getEntityManager());
+
+	public Boolean create(Region r) {
+		return dao.add(r);
 	}
 
-	public Boolean remove(Object o) {
-		// TODO Auto-generated method stub
-		return null;
+	public Boolean remove(Region r) {
+		return dao.delete(r);
 	}
 
-	public Boolean update(Object o) {
-		// TODO Auto-generated method stub
-		return null;
+	public Boolean update(Region r) {
+		return dao.update(r);
 	}
 
-	public Object findById(Object o) {
-		// TODO Auto-generated method stub
-		return null;
+	public Region findById(String name) {
+		return dao.findByID(name);
 	}
 
-	public List<Object> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Region> findAll() {
+		return dao.findAll();
 	}
 
 }
