@@ -6,11 +6,12 @@ import javax.persistence.EntityManager;
 
 import org.hibernate.mapping.Map;
 
-
+import fr.TAA.ProjetWeekEnd.City;
 import fr.TAA.ProjetWeekEnd.Sport;
 import fr.TAA.ProjetWeekEnd.SportPK;
 
-public class SportDAO {
+
+public class SportDAO<level> {
 
 	public SportDAO() {
 		super();
@@ -31,9 +32,13 @@ public class SportDAO {
 
 	}
 
-	public Sport findByID(SportPK SPK) {
+	public Sport findByID(String name, level level) {
 
-		return manager.find(Sport.class, SPK);
+		String query = "select s from Sport as s where s.name = :name and s.level = :level";
+		return (Sport) manager.createQuery(query)
+				.setParameter("name", name)
+				.setParameter("level", level)
+				.getSingleResult();
 
 	}
 
@@ -44,7 +49,12 @@ public class SportDAO {
 	}
 
 	public Boolean exist(Sport s) {
-		return (findByID(s.getSportPK()) != null);
+		String query = "select count(s) from Sport as s where s.name = :name and s.level = :level";
+		return (Long) manager.createQuery(query)
+				.setParameter("name", s.getName())
+				.setParameter("level", s.getSportPK().getLevel())
+				.getSingleResult()
+				== 1;
 
 	}
 	public Boolean add(Sport s) {
@@ -63,7 +73,7 @@ public class SportDAO {
 	}
 	public Boolean update(Sport s) {
 
-		Sport Sportu =  findByID(s.getSportPK());
+		Sport Sportu =  findByID(s.getName(),(level) s.getSportPK().getLevel());
 		if(Sportu != null) {		 
 			manager.getTransaction().begin();
 
@@ -76,4 +86,5 @@ public class SportDAO {
 
 		return true;
 	}
+	
 }
