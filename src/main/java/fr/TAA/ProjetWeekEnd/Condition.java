@@ -11,7 +11,7 @@ import fr.TAA.ProjetWeekEnd.Weather.Sunshine;
 @Entity
 public class Condition {
 	
-	private long id;
+	private int id;
 	private double minTemperature;
 	private double minPluviometry;
 	private double minWindCondition;
@@ -21,11 +21,11 @@ public class Condition {
 	private ArrayList<Sunshine> toleratedSunshine;
 	
 	@Id
-	public long getId() {
+	public int getId() {
 		return id;
 	}
 	
-	public void set(long identifier) {
+	public void set(int identifier) {
 		this.id = identifier;
 	}
 	
