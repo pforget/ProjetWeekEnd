@@ -11,38 +11,39 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 import DAO.WeatherConditionDAO;
+import fr.TAA.ProjetWeekEnd.Condition;
 import fr.TAA.ProjetWeekEnd.EntityManagerHelper;
 
 @Path("/WC")
-public class WeatherConditionService implements InterfaceService {
+public class WeatherConditionService {
 
 	WeatherConditionDAO dao = new WeatherConditionDAO(EntityManagerHelper.getEntityManager());
 	
 	@POST
-	public Boolean create(Object o) {
-		return dao.add(o);
+	public Boolean create(Condition c) {
+		return dao.add(c);
 	}
 
 	@DELETE
-	public Boolean remove(Object o) {
+	public Boolean remove(Condition o) {
 		return dao.delete(o);
 	}
 
 	@PUT
-	public Boolean update(Object o) {
+	public Boolean update(Condition o) {
 		return dao.update(o);
 	}
 
 	@Path("/{id}")
 	@GET
 	@Produces({MediaType.APPLICATION_JSON})
-	public Object findById(@PathParam("id") Object o) {
-		return dao.findByID(o);
+	public Object findById(@PathParam("id") int i) {
+		return dao.findByID(i);
 	}
 	
 	@GET
 	@Produces({MediaType.APPLICATION_JSON})
-	public List<Object> findAll() {
+	public List<Condition> findAll() {
 		return dao.findAll();
 	}
 
