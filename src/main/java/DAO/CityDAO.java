@@ -7,7 +7,7 @@ import javax.persistence.EntityManager;
 
 import fr.TAA.ProjetWeekEnd.*;
 
-public class CityDAO implements AbstractDAO{
+public class CityDAO{
 
 	public CityDAO(EntityManager manager) {
 		this.manager = manager;
@@ -18,15 +18,13 @@ public class CityDAO implements AbstractDAO{
 
 	EntityManager manager;
 	
-	public long countAll(Map param) {
+	public Long countAll(Map param) {
 		String query = "select count(c) from City as c";
 		return (Long) manager.createQuery(query).getSingleResult();
 	}
 
-	public Object findByID(Object o) {
-		CityPK cityPK = (CityPK) o;
-		String name = cityPK.getName();
-		int postalCode = cityPK.getPostalCode();
+	public City findByID(String name, int postalCode) {
+
 		String query = "select c from City as c where c.name = :name and c.postalCode = :postalCode";
 		return (City) manager.createQuery(query)
 				.setParameter("name", name)
@@ -34,47 +32,48 @@ public class CityDAO implements AbstractDAO{
 				.getSingleResult();
 	}
 
-	public List<Object> findByName(String name) {
+	public List<City> findByName(String name) {
 		String query = "select c from City as c where c.name = :name";
 		return manager.createQuery(query).setParameter("name", name).getResultList();
 	}
+	
+	public List<City> findByPostalCode(int postalCode){
+		String query = "select c from City as c where c.postalCode = :postalCode";
+		return manager.createQuery(query)
+				.setParameter("postalCode", postalCode)
+				.getResultList();
+	}
 
-	public Boolean exist(Object o) {
-		City city = (City) o;
-		String cityName = city.getName();
-		int postalCode = city.getPostalCode();
+	public Boolean exist(City c) {
 		String query = "select count(c) from City as c where c.name = :name and c.postalCode = :postalCode";
 		return (Long) manager.createQuery(query)
-				.setParameter("name", cityName)
-				.setParameter("postalCode", postalCode)
+				.setParameter("name", c.getName())
+				.setParameter("postalCode", c.getPostalCode())
 				.getSingleResult()
 				== 1;
 	}
 
-	public List<Object> findAll() {
+	public List<City> findAll() {
 		String query = "select c from City as c";
 		return manager.createQuery(query).getResultList();
 	}
 
-	public Boolean add(Object o) {
-		City c = (City) o;
+	public Boolean add(City c) {
 		manager.getTransaction().begin();
 		manager.persist(c);
 		manager.getTransaction().commit();
 		return true;
 	}
 
-	public Boolean delete(Object o) {
-		City c = (City) o;
+	public Boolean delete(City c) {
 		manager.getTransaction().begin();
 		manager.remove(c);
 		manager.getTransaction().commit();
 		return true;
 	}
 
-	public Boolean update(Object o) {
-		City c = (City) o;
-		City cOutOfDate = (City) findByID(c.getCityPK());
+	public Boolean update(City c) {
+		City cOutOfDate = findByID(c.getName(), c.getPostalCode());
 		
 		manager.getTransaction().begin();
 		cOutOfDate.setDepartmentID(c.getDepartmentID());
