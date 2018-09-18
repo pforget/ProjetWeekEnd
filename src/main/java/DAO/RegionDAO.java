@@ -8,7 +8,7 @@ import org.hibernate.mapping.Map;
 
 import fr.TAA.ProjetWeekEnd.Region;
 
-public class RegionDAO  implements AbstractDAO {
+public class RegionDAO {
 
 	public RegionDAO() {
 
@@ -23,45 +23,34 @@ public class RegionDAO  implements AbstractDAO {
 		return (Long) manager.createQuery(query).getSingleResult();
 	}
 
-	public List<Object> findAll() {
+	public List<Region> findAll() {
 		String query = "select r from Region as r";
 		return manager.createQuery(query).getResultList();
 	}
 
-	public Object findByID(Object id) {
-		// TODO Auto-generated method stub
-		String ID = (String) id; 
-		
+	public Object findByID(String id) {		
 		String query = "select r from Region as r where r.name = :name";
-		return manager.createQuery(query).setParameter("name", ID).getFirstResult();
+		return manager.createQuery(query).setParameter("name", id).getFirstResult();
 	}
 
-	public List<Object> findByName(String name) {
-		String query = "select r from Region as r where r.name = :name";
-		return manager.createQuery(query).setParameter("name", name).getResultList();
-	}
 
-	public Boolean exist(Object o) {
-		Region r = (Region) o;
-		return findByName(r.getName()) != null;
+	public Boolean exist(Region r) {
+		return findByID(r.getName()) != null;
 	}
-	public Boolean add(Object o) {
-		Region r = (Region) o;
+	public Boolean add(Region r) {
 		manager.getTransaction().begin();
 		manager.persist(r);
 		manager.getTransaction().commit();
 		return true;
 	}
-	public Boolean delete(Object o) {
-		Region r = (Region) o;
+	public Boolean delete(Region r) {
 		manager.getTransaction().begin();
 		manager.remove(r);
 		manager.getTransaction().commit();
 		return true;
 	}
-	public Boolean update(Object o) {
-		Region r = (Region) o;
-		Region rOutOfDate = (Region) findByName(r.getName());
+	public Boolean update(Region r) {
+		Region rOutOfDate = (Region) findByID(r.getName());
 		
 		manager.getTransaction().begin();
 		rOutOfDate.setDepartments(r.getDepartments());;

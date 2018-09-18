@@ -8,8 +8,9 @@ import org.hibernate.mapping.Map;
 
 
 import fr.TAA.ProjetWeekEnd.Sport;
+import fr.TAA.ProjetWeekEnd.SportPK;
 
-public class SportDAO  implements AbstractDAO {
+public class SportDAO {
 
 	public SportDAO() {
 		super();
@@ -24,40 +25,35 @@ public class SportDAO  implements AbstractDAO {
 		return (long) manager.createQuery(Query).getFirstResult();
 	}
 
-	public List<Object> findAll() {
+	public List<Sport> findAll() {
 		String query = "select s from Sport as s";
 		return manager.createQuery(query).getResultList();
 
 	}
 
-	public Sport findByID(Object id) {
-		int iD = (Integer) id;
+	public Sport findByID(SportPK SPK) {
 
-		return manager.find(Sport.class, iD);
+		return manager.find(Sport.class, SPK);
 
 	}
 
-	public List<Object> findByName(String name) {
+	public List<Sport> findByName(String name) {
 		String Query = "select s from Sport as s where s.name = :name";
 		return manager.createQuery(Query).setParameter("name", name).getResultList();
 
 	}
 
-	public Boolean exist(Object o) {
-		Sport sport = (Sport) o;
-		return (findByID(sport.getSportPK()) != null);
+	public Boolean exist(Sport s) {
+		return (findByID(s.getSportPK()) != null);
 
 	}
-	public Boolean add(Object o) {
-		Sport s = (Sport) o;
-
+	public Boolean add(Sport s) {
 		manager.getTransaction().begin();
 		manager.persist(s);
 		manager.getTransaction().commit();
 		return true;
 	}
-	public Boolean delete(Object o) {
-		Sport s = (Sport) o;
+	public Boolean delete(Sport s) {
 
 		manager.getTransaction().begin();
 		manager.remove(s);
@@ -65,8 +61,7 @@ public class SportDAO  implements AbstractDAO {
 
 		return true;
 	}
-	public Boolean update(Object o) {
-		Sport s = (Sport) o;
+	public Boolean update(Sport s) {
 
 		Sport Sportu =  findByID(s.getSportPK());
 		if(Sportu != null) {		 

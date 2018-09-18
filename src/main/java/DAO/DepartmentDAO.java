@@ -9,7 +9,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 
 
-public class DepartmentDAO  implements AbstractDAO {
+public class DepartmentDAO  {
 
 	public DepartmentDAO() {
 
@@ -25,45 +25,40 @@ public class DepartmentDAO  implements AbstractDAO {
 		return (Long) manager.createQuery(query).getSingleResult();
 	}
 
-	public Object findByID(Object i) {
-		int id = (Integer) i;
+	public Department findByID(int id) {
 		String query = "select d from Department as d where d.id = :id";
-		return manager.createQuery(query).setParameter("id", id).getSingleResult();
+		return (Department)manager.createQuery(query).setParameter("id", id).getSingleResult();
 	}
 
-	public List<Object> findByName(String name) {
+	public List<Department> findByName(String name) {
 		String query = "select d from Department as d where d.name = :name";
 		return manager.createQuery(query).setParameter("name", name).getResultList();
 	}
 
-	public Boolean exist(Object o) {
-		Department d = (Department) o;
+	public Boolean exist(Department d) {
 		return findByID(d.getId()) != null;
 	}
 
-	public List<Object> findAll() {
+	public List<Department> findAll() {
 		String query = "select d from Department as d";
 		return manager.createQuery(query).getResultList();
 	}
 	
-	public Boolean add(Object o) {
-		Department d = (Department) o;
+	public Boolean add(Department d) {
 		manager.getTransaction().begin();
 		manager.persist(d);
 		manager.getTransaction().commit();
 		return true;
 	}
 	
-	public Boolean delete(Object o) {
-		Department d = (Department) o;
+	public Boolean delete(Department d) {
 		manager.getTransaction().begin();
 		manager.remove(d);
 		manager.getTransaction().commit();
 		return true;
 	}
 	
-	public Boolean update(Object o) {
-		Department d = (Department) o;
+	public Boolean update(Department d) {
 		Department dOutOfDate = (Department) findByID(d.getId());
 		
 		manager.getTransaction().begin();

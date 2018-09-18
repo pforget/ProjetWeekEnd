@@ -9,7 +9,7 @@ import org.hibernate.mapping.Map;
 import fr.TAA.ProjetWeekEnd.Location;
 
 
-public class LocationDAO  implements AbstractDAO {
+public class LocationDAO  {
 
 	public LocationDAO() {
 		// TODO Auto-generated constructor stub
@@ -25,35 +25,30 @@ public class LocationDAO  implements AbstractDAO {
 		return (long) manager.createQuery(query).getFirstResult();
 	}
 
-	public List<Object> findAll() {
+	public List<Location> findAll() {
 		String query = "select l from Location as l";
 		return manager.createQuery(query).getResultList();
 	}
 
-	public Location findByID(Object id) {
-		int iD = (Integer) id;
-		
-		return manager.find(Location.class, iD);
+	public Location findByID(int id) {
+	
+		return manager.find(Location.class, id);
 	}
 
-	public List<Object> findByName(String name) {
-		return null;
+	public Boolean exist(Location l) {
+		return (findByID(l.getId()) != null);
 	}
-
-	public Boolean exist(Object o) {
-		return (findByID(((Location) o).getId()) != null);
-	}
-	public Boolean add(Object o) {
-		Location l = (Location) o;
-		
+	
+	public Boolean add(Location l) {
+	
 		manager.getTransaction().begin();
 		manager.persist(l);
 		manager.getTransaction().commit();
 
 		return true;
 	}
-	public Boolean delete(Object o) {
-		Location l = (Location) o;
+	
+	public Boolean delete(Location l) {
 
 		manager.getTransaction().begin();
 		manager.remove(l);
@@ -62,8 +57,7 @@ public class LocationDAO  implements AbstractDAO {
 		return true;
 	}
 	
-	public Boolean update(Object o) {
-		Location l = (Location) o;
+	public Boolean update(Location l) {
 		
 		Location lOld = findByID(l.getId());
 		

@@ -6,7 +6,7 @@ import javax.persistence.EntityManager;
 
 import fr.TAA.ProjetWeekEnd.User;
 
-public class UserDAO implements AbstractDAO {
+public class UserDAO {
 
 	public UserDAO() {
 		// TODO Auto-generated constructor stub
@@ -23,25 +23,23 @@ public class UserDAO implements AbstractDAO {
 		return (long) manager.createQuery(query).getFirstResult();
 	}
 
-	public List<Object> findAll() {
+	public List<User> findAll() {
 		String query = "select u from User as u";
 		return manager.createQuery(query).getResultList();
 	}
 
-	public User findByID(Object id) {
-		int iD = (Integer) id;
+	public User findByID(int id) {
 
-		return manager.find(User.class, iD);
+		return manager.find(User.class, id);
 	}
 
-	public List<Object> findByName(String name) {
+	public List<User> findByName(String name) {
 		String query = "select u from User as u where u.name = :name";
 		return manager.createQuery(query).setParameter("name", name).getResultList();
 	}
 
-	public Boolean add(Object o) {
-		User u = (User) o;
-		
+	public Boolean add(User u) {
+	
 		manager.getTransaction().begin();
 		manager.persist(u);
 		manager.getTransaction().commit();
@@ -49,8 +47,7 @@ public class UserDAO implements AbstractDAO {
 		return true;
 	}
 
-	public Boolean delete(Object o) {
-		User u = (User) o;
+	public Boolean delete(User u) {
 
 		manager.getTransaction().begin();
 		manager.remove(u);
@@ -59,9 +56,7 @@ public class UserDAO implements AbstractDAO {
 		return true;
 	}
 
-	public Boolean update(Object o) {
-		User u = (User) o;
-		
+	public Boolean update(User u) {		
 		User uOutOfDate =  findByID(u.getId());	
 		
 		 if(uOutOfDate != null) {		 
@@ -80,8 +75,8 @@ public class UserDAO implements AbstractDAO {
 		return false;
 	}
 
-	public Boolean exist(Object o) {
-		return (findByID(((User) o).getId()) != null);
+	public Boolean exist(User u) {
+		return (findByID(u.getId()) != null);
 	}
 
 }

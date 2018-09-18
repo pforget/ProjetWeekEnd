@@ -10,7 +10,7 @@ import org.hibernate.mapping.Map;
 import fr.TAA.ProjetWeekEnd.Condition;
 import fr.TAA.ProjetWeekEnd.Weather.Sunshine;
 
-public class WeatherConditionDAO implements AbstractDAO {
+public class WeatherConditionDAO {
 
 	public WeatherConditionDAO(EntityManager manager) {
 		this.manager = manager;
@@ -27,29 +27,20 @@ public class WeatherConditionDAO implements AbstractDAO {
 		return (long) manager.createQuery(query).getFirstResult();
 	}
 
-	public List<Object> findAll() {
+	public List<Condition> findAll() {
 		String query = "select c from Condition as c";
 		return manager.createQuery(query).getResultList();
 	}
 
-	public Condition findByID(Object id) {
-		int iD = (Integer) id;
-
-		return manager.find(Condition.class, iD);
+	public Condition findByID(int id) {
+		return manager.find(Condition.class, id);
 	}
 
-	public List<Object> findByName(String name) {
-		// Condition doesn't have name
-		return null;
+	public Boolean exist(Condition c) {
+		return (findByID(c.getId()) != null);
 	}
 
-	public Boolean exist(Object o) {
-		return (findByID(((Condition) o).getId()) != null);
-	}
-
-	public Boolean add(Object o) {
-		Condition c = (Condition) o;
-
+	public Boolean add(Condition c) {
 		manager.getTransaction().begin();
 		manager.persist(c);
 		manager.getTransaction().commit();
@@ -57,9 +48,7 @@ public class WeatherConditionDAO implements AbstractDAO {
 		return true;
 	}
 
-	public Boolean delete(Object o) {
-		Condition c = (Condition) o;
-
+	public Boolean delete(Condition c) {
 		manager.getTransaction().begin();
 		manager.remove(c);
 		manager.getTransaction().commit();
@@ -67,9 +56,7 @@ public class WeatherConditionDAO implements AbstractDAO {
 		return true;
 	}
 
-	public Boolean update(Object o) {
-		Condition c = (Condition) o;
-		
+	public Boolean update(Condition c) {		
 		Condition cOld =  findByID(c.getId());	
 		
 		 if(cOld != null) {		 
