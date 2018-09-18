@@ -8,5 +8,5 @@ public interface InterfaceService {
 	public Boolean remove (Object o);
 	public Boolean update (Object o);
 	public Object findById (Object o);
-	public List<Object> findAll (Object o);
+	public List<Object> findAll ();
 }

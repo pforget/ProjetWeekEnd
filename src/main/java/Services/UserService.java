@@ -23,35 +23,30 @@ public class UserService implements InterfaceService{
 
 	@POST
 	public Boolean create(Object o) {
-		// TODO Auto-generated method stub
-		return null;
+		return dao.add(o);
 	}
 
 	@DELETE
 	public Boolean remove(Object o) {
-		// TODO Auto-generated method stub
-		return null;
+		return dao.delete(o);
 	}
 
 	@PUT
 	public Boolean update(Object o) {
-		// TODO Auto-generated method stub
-		return null;
+		return dao.update(o);
 	}
 
 	@Path("/{id}")
 	@GET
 	@Produces({MediaType.APPLICATION_JSON})
 	public Object findById(@PathParam("id") Object o) {
-		// TODO Auto-generated method stub
-		return null;
+		return dao.findByID(o);
 	}
 
 	@GET
 	@Produces({MediaType.APPLICATION_JSON})
-	public List<Object> findAll(Object o) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Object> findAll() {
+		return dao.findAll();
 	}
 
 }
