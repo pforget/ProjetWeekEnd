@@ -11,9 +11,10 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import DAO.UserDAO;
 import fr.TAA.ProjetWeekEnd.EntityManagerHelper;
+import fr.TAA.ProjetWeekEnd.User;
 
 @Path("/Users")
-public class UserService implements InterfaceService{
+public class UserService {
 	
 	UserDAO dao = new UserDAO(EntityManagerHelper.getEntityManager());
 	
@@ -22,30 +23,30 @@ public class UserService implements InterfaceService{
 	}
 
 	@POST
-	public Boolean create(Object o) {
-		return dao.add(o);
+	public Boolean create(User u) {
+		return dao.add(u);
 	}
 
 	@DELETE
-	public Boolean remove(Object o) {
-		return dao.delete(o);
+	public Boolean remove(User u) {
+		return dao.delete(u);
 	}
 
 	@PUT
-	public Boolean update(Object o) {
-		return dao.update(o);
+	public Boolean update(User u) {
+		return dao.update(u);
 	}
 
 	@Path("/{id}")
 	@GET
 	@Produces({MediaType.APPLICATION_JSON})
-	public Object findById(@PathParam("id") Object o) {
-		return dao.findByID(o);
+	public User findById(@PathParam("id") int i) {
+		return dao.findByID(i);
 	}
 
 	@GET
 	@Produces({MediaType.APPLICATION_JSON})
-	public List<Object> findAll() {
+	public List<User> findAll() {
 		return dao.findAll();
 	}
 
