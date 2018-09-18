@@ -1,32 +1,66 @@
 package Services;
 
+import javax.ws.rs.GET;
+import javax.ws.rs.POST;
+import javax.ws.rs.DELETE;
+import javax.ws.rs.PUT;
+import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
+
 import java.util.List;
 
-public class CityService implements InterfaceService {
+import DAO.CityDAO;
+import fr.TAA.ProjetWeekEnd.City;
+import fr.TAA.ProjetWeekEnd.EntityManagerHelper;
 
-	public Boolean create(Object o) {
-		// TODO Auto-generated method stub
-		return null;
+@Path("/cities")
+public class CityService {
+	
+	CityDAO dao = new CityDAO(EntityManagerHelper.getEntityManager());
+	
+	public CityService() {
+		
 	}
 
-	public Boolean remove(Object o) {
-		// TODO Auto-generated method stub
-		return null;
+	@POST
+	public Boolean create(City c) {
+		return dao.add(c);
 	}
 
-	public Boolean update(Object o) {
-		// TODO Auto-generated method stub
-		return null;
+	@DELETE
+	public Boolean remove(City c) {
+		return dao.delete(c);
 	}
 
-	public Object findById(Object o) {
-		// TODO Auto-generated method stub
-		return null;
+	@PUT
+	public Boolean update(City c) {
+		return dao.update(c);
 	}
 
-	public List<Object> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+	@GET
+	@Produces({MediaType.APPLICATION_JSON})
+	public City findById(String name, int postalCode) {
+		return dao.findByID(name, postalCode);
+	}
+
+	@GET
+	@Produces({MediaType.APPLICATION_JSON})
+	public List<City> findAll() {
+		return dao.findAll();
+	}
+	
+	@GET
+	@Produces({MediaType.APPLICATION_JSON})
+	public List<City> findByName(String name){
+		return dao.findByName(name);
+	}
+	
+	@GET
+	@Produces({MediaType.APPLICATION_JSON})
+	public List<City> findByPostalCode(int postalCode){
+		return dao.findByPostalCode(postalCode);
 	}
 
 }
