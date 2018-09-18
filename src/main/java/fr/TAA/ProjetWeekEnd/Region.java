@@ -21,6 +21,7 @@ public class Region {
 
 	private String name;
 	
+	@Transient
 	private List<Department> departments;
 	
 	@Id
