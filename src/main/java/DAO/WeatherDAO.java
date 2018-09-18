@@ -6,9 +6,6 @@ import javax.persistence.EntityManager;
 
 import org.hibernate.mapping.Map;
 
-import fr.TAA.ProjetWeekEnd.EntityManagerHelper;
-import fr.TAA.ProjetWeekEnd.Sport;
-import fr.TAA.ProjetWeekEnd.User;
 import fr.TAA.ProjetWeekEnd.Weather;
 
 public class WeatherDAO  implements AbstractDAO {

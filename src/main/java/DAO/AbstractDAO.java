@@ -3,7 +3,6 @@ package DAO;
 import java.util.List;
 
 import org.hibernate.mapping.Map;
-import fr.TAA.ProjetWeekEnd.*;
 
 public interface AbstractDAO {
 	

@@ -6,7 +6,6 @@ import javax.persistence.EntityManager;
 
 import org.hibernate.mapping.Map;
 
-import fr.TAA.ProjetWeekEnd.Department;
 import fr.TAA.ProjetWeekEnd.Region;
 
 public class RegionDAO  implements AbstractDAO {
@@ -33,7 +32,8 @@ public class RegionDAO  implements AbstractDAO {
 		// TODO Auto-generated method stub
 		String ID = (String) id; 
 		
-		return null;
+		String query = "select r from Region as r where r.name = :name";
+		return manager.createQuery(query).setParameter("name", ID).getFirstResult();
 	}
 
 	public List<Object> findByName(String name) {

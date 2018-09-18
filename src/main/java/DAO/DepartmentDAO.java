@@ -2,7 +2,6 @@ package DAO;
 
 import org.hibernate.mapping.Map;
 
-import fr.TAA.ProjetWeekEnd.City;
 import fr.TAA.ProjetWeekEnd.Department;
 
 import java.util.List;

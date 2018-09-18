@@ -3,7 +3,6 @@ package DAO;
 import java.util.List;
 import org.hibernate.mapping.Map;
 import javax.persistence.EntityManager;
-import javax.persistence.Query;
 
 import fr.TAA.ProjetWeekEnd.User;
 
