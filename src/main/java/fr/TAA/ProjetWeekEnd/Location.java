@@ -9,15 +9,14 @@ import javax.persistence.OneToMany;
 @Entity
 public class Location {
 	
-	public Location(int id, City city, Department department, Region region, Boolean hasWater,
-			Boolean hasMontagne) {
+	public Location(int id, City city, Department department, Region region, Boolean hasAdequateSport) {
 		super();
 		this.id = id;
 		this.city = city;
 		this.department = department;
 		this.region = region;
-		this.hasWater = hasWater;
-		this.hasMontagne = hasMontagne;
+		this.hasAdequateSport = hasAdequateSport;
+		
 	}
 
 	private int id;
@@ -30,9 +29,9 @@ public class Location {
 	
 	private Weather weather;
 	
-	private Boolean hasWater;
+	private Boolean hasAdequateSport;
 	
-	private Boolean hasMontagne;
+	
 	
 	public Location() {
 		
@@ -75,7 +74,7 @@ public class Location {
 		this.region = region;
 	}
 
-	@OneToMany
+	@ManyToOne
 	public Weather getWeather() {
 		return weather;
 	}
@@ -84,20 +83,16 @@ public class Location {
 		this.weather = weather;
 	}
 
-	public Boolean getHasWater() {
-		return hasWater;
+	public Boolean getHasAdequateSport() {
+		return hasAdequateSport;
 	}
 
-	public void setHasWater(Boolean hasWater) {
-		this.hasWater = hasWater;
+	public void setHasAdequateSport(Boolean hasAdequateSport) {
+		this.hasAdequateSport = hasAdequateSport;
 	}
 
-	public Boolean getHasMontagne() {
-		return hasMontagne;
-	}
+	
 
-	public void setHasMontagne(Boolean hasMontagne) {
-		this.hasMontagne = hasMontagne;
-	}
+	
 }
 
