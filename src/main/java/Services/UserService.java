@@ -11,6 +11,8 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import DAO.UserDAO;
 import fr.TAA.ProjetWeekEnd.EntityManagerHelper;
+import fr.TAA.ProjetWeekEnd.Location;
+import fr.TAA.ProjetWeekEnd.Sport;
 import fr.TAA.ProjetWeekEnd.User;
 
 @Path("/Users")
@@ -48,6 +50,23 @@ public class UserService {
 	@Produces({MediaType.APPLICATION_JSON})
 	public List<User> findAll() {
 		return dao.findAll();
+	}
+	
+	@Path("/{id}/Sports")
+	@GET
+	@Produces({MediaType.APPLICATION_JSON})
+	public List<Sport> getFavoriteSportByUser(int userId){
+		User u = findById(userId);
+		return dao.getFavoriteSports(u);
+	}
+	
+	
+	@Path("/{id}/Locations")
+	@GET
+	@Produces({MediaType.APPLICATION_JSON})
+	public List<Location> getFavoriteLocationsByUser(int userId){
+		User u = findById(userId);
+		return dao.getFavoriteLocations(u);
 	}
 
 }
