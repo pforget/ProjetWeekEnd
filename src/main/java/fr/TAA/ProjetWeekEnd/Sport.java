@@ -1,5 +1,7 @@
 package fr.TAA.ProjetWeekEnd;
 
+import java.io.Serializable;
+
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
@@ -8,7 +10,7 @@ import javax.persistence.ManyToOne;
 enum level {Begginer,Advanced,Expert};
 
 @Entity
-public class Sport {
+public class Sport implements Serializable {
     
     @EmbeddedId
     private SportPK sportPK;

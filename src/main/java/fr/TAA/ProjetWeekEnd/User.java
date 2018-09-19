@@ -1,5 +1,6 @@
 package fr.TAA.ProjetWeekEnd;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -9,7 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 @Entity
-public class User {
+public class User implements Serializable {
     public User(int id, String name, List<Sport> favoriteSports, List<Location> favoriteLocations) {
 		super();
 		this.id = id;

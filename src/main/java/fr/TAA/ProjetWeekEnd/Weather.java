@@ -1,11 +1,13 @@
 package fr.TAA.ProjetWeekEnd;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Entity
-public class Weather {
+public class Weather implements Serializable {
 	
 
 public enum Sunshine {

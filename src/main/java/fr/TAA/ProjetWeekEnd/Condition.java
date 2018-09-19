@@ -1,5 +1,6 @@
 package fr.TAA.ProjetWeekEnd;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import javax.persistence.Column;
@@ -9,7 +10,7 @@ import javax.persistence.Id;
 import fr.TAA.ProjetWeekEnd.Weather.Sunshine;
 
 @Entity
-public class Condition {
+public class Condition implements Serializable {
 	
 	private int id;
 	private double minTemperature;

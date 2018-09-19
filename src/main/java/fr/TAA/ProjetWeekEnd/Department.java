@@ -1,5 +1,6 @@
 package fr.TAA.ProjetWeekEnd;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -10,7 +11,7 @@ import javax.persistence.Transient;
 
 
 @Entity
-public class Department {
+public class Department implements Serializable {
 	
 	public Department(int id, String name, Region regionId, List<City> cities) {
 		super();

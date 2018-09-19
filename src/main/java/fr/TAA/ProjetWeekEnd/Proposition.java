@@ -1,8 +1,10 @@
 package fr.TAA.ProjetWeekEnd;
 
+import java.io.Serializable;
+
 import javax.persistence.EmbeddedId;
 
-public class Proposition {
+public class Proposition implements Serializable {
 	
 	@EmbeddedId
 	private PropositionPK propositionPK;
