@@ -22,6 +22,12 @@ public class User {
 	private String username;
 	private String password;
 	private String email;
+
+	private String name;
+
+    private List<Sport> favoriteSports;
+    
+    private List<Location> favoriteLocations;
 	
     public User() {
     }
@@ -71,11 +77,6 @@ public class User {
 		this.email = email;
 	}
 
-	private String name;
-
-    private List<Sport> favoriteSports;
-    
-    private List<Location> favoriteLocations;
 
 	
 	@OneToMany
