@@ -25,18 +25,21 @@ public class LocationService {
 	}
 
 	@POST
-	public Boolean create(Location c) {
-		return dao.add(c);
+	public Boolean create(Location l) {
+		if (dao.exist(l)) {
+			return false;
+		}
+		return dao.add(l);
 	}
 
 	@DELETE
-	public Boolean remove(Location c) {
-		return dao.delete(c);
+	public Boolean remove(Location l) {
+		return dao.delete(l);
 	}
 
 	@PUT
-	public Boolean update(Location c) {
-		return dao.update(c);
+	public Boolean update(Location l) {
+		return dao.update(l);
 	}
 
 	@Path("/{id}")

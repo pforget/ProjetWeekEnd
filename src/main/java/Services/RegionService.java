@@ -11,6 +11,9 @@ public class RegionService {
 	RegionDAO dao = new RegionDAO(EntityManagerHelper.getEntityManager());
 
 	public Boolean create(Region r) {
+		if (dao.exist(r)) {
+			return false;
+		}
 		return dao.add(r);
 	}
 

@@ -26,6 +26,9 @@ public class UserService {
 
 	@POST
 	public Boolean create(User u) {
+		if (dao.exist(u)) {
+			return false;
+		}
 		return dao.add(u);
 	}
 

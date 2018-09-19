@@ -26,6 +26,9 @@ public class DepartmentService {
 	
 	@POST
 	public Boolean create(Department d) {
+		if (dao.exist(d)) {
+			return false;
+		}
 		return dao.add(d);
 	}
 

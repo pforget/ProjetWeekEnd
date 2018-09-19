@@ -20,6 +20,9 @@ public class WeatherService {
 	
 	@POST
 	public Boolean create(Weather w) {
+		if (dao.exist(w)) {
+			return false;
+		}
 		return dao.add(w);
 	}
 

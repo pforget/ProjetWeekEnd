@@ -21,6 +21,9 @@ public class WeatherConditionService {
 	
 	@POST
 	public Boolean create(Condition c) {
+		if (dao.exist(c)) {
+			return false;
+		}
 		return dao.add(c);
 	}
 

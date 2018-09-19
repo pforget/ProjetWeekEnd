@@ -39,6 +39,9 @@ public class SportService<level> {
 		}
 	@POST
 	public Boolean create(Sport s) {
+		if (dao.exist(s)) {
+			return false;
+		}
 		return dao.add(s);
 		
 	}

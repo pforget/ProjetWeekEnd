@@ -26,6 +26,9 @@ public class CityService {
 
 	@POST
 	public Boolean create(City c) {
+		if (dao.exist(c)) {
+			return false;
+		}
 		return dao.add(c);
 	}
 
