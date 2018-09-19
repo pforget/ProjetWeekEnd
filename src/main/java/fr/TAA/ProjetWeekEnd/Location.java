@@ -1,5 +1,7 @@
 package fr.TAA.ProjetWeekEnd;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -9,7 +11,7 @@ import javax.persistence.OneToMany;
 @Entity
 public class Location {
 	
-	public Location(int id, City city, Department department, Region region, Boolean hasAdequateSport) {
+	public Location(int id, City city, Department department, Region region, Boolean hasAdequateSport, List<Sport> PraticableSports) {
 		super();
 		this.id = id;
 		this.city = city;
@@ -21,6 +23,15 @@ public class Location {
 
 	private int id;
 	
+	public List<Sport> getPraticableSports() {
+		return PraticableSports;
+	}
+
+	public void setPraticableSports(List<Sport> praticableSports) {
+		PraticableSports = praticableSports;
+	}
+
+	private List<Sport> PraticableSports;
 	private City city;
 	
 	private Department department;
