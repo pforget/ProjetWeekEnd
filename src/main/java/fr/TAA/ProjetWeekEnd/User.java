@@ -7,6 +7,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
 @Entity
@@ -29,6 +30,8 @@ public class User implements Serializable {
     private List<Sport> favoriteSports;
     
     private List<Location> favoriteLocations;
+    
+    private List<Proposition> propositions;
 	
     public User() {
     }
@@ -96,6 +99,15 @@ public class User implements Serializable {
 
 	public void setFavoriteLocations(List<Location> favoriteLocations) {
 		this.favoriteLocations = favoriteLocations;
+	}
+
+	@ManyToMany
+	public List<Proposition> getPropositions() {
+		return propositions;
+	}
+
+	public void setPropositions(List<Proposition> propositions) {
+		this.propositions = propositions;
 	}
 
 }
