@@ -8,6 +8,7 @@ import org.hibernate.mapping.Map;
 
 import fr.TAA.ProjetWeekEnd.City;
 import fr.TAA.ProjetWeekEnd.Location;
+import fr.TAA.ProjetWeekEnd.Proposition;
 import fr.TAA.ProjetWeekEnd.Sport;
 import fr.TAA.ProjetWeekEnd.User;
 
@@ -33,10 +34,10 @@ public class PropositionDAO {
 		return manager.createQuery(query).getResultList();
 	}
 
-	public User findByID(Sport s, Location l) {
+	public Proposition findByID(Sport s, Location l) {
 
 		String query = "select p from Proposition as p where p.sport = :sport and p.location = :location";
-		return (City) manager.createQuery(query)
+		return (Proposition) manager.createQuery(query)
 				.setParameter("sport", s)
 				.setParameter("location", l)
 				.getSingleResult();
