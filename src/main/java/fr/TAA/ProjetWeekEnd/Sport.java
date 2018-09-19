@@ -68,6 +68,11 @@ public class Sport {
 		WeatherCondition = weatherCondition;
 	}
 	
+	public boolean isPracticable(Weather weather) {
+		return WeatherCondition.isFulfilled(weather);
+	}
+	
+	
 	
 
 }

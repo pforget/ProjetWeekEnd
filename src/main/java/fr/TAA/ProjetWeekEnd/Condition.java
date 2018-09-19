@@ -13,11 +13,11 @@ public class Condition {
 	
 	private int id;
 	private double minTemperature;
-	private double minPluviometry;
+//	private double minPluviometry;
 	private double minWindCondition;
 	private double maxWindCondition;
 	private double maxTemperature;
-	private double maxPluviometry;
+//	private double maxPluviometry;
 	private ArrayList<Sunshine> toleratedSunshine;
 	
 	@Id
@@ -36,12 +36,14 @@ public class Condition {
 		this.minTemperature = minTemperature;
 	}
 	
+/*
 	public double getMinPluviometry() {
 		return minPluviometry;
 	}
 	public void setMinPluviometry(double minPluviometry) {
 		this.minPluviometry = minPluviometry;
 	}
+*/
 	
 	public double getMinWindCondition() {
 		return minWindCondition;
@@ -64,12 +66,14 @@ public class Condition {
 		this.maxTemperature = maxTemperature;
 	}
 	
+/*
 	public double getMaxPluviometry() {
 		return maxPluviometry;
 	}
 	public void setMaxPluviometry(double maxPluviometry) {
 		this.maxPluviometry = maxPluviometry;
 	}
+*/
 	
 	@Column(nullable = false)
 	public ArrayList<Sunshine> getToleratedSunshine() {
@@ -77,6 +81,20 @@ public class Condition {
 	}
 	public void setToleratedSunshine(ArrayList<Sunshine> toleratedSunshine) {
 		this.toleratedSunshine = toleratedSunshine;
+	}
+	
+	public boolean isFulfilled(Weather weather) {
+		double temperature = weather.getTemperature();
+		double windSpeed = weather.getWind();
+		Sunshine sunshine = weather.getSunshine();
+		
+		return
+				temperature >= minTemperature
+				&& temperature <= maxTemperature
+				&& windSpeed >= minWindCondition
+				&& windSpeed <= maxWindCondition
+				&& toleratedSunshine.contains(weather.getSunshine())
+				;
 	}
 
 
