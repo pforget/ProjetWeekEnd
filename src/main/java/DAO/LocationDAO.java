@@ -66,9 +66,32 @@ public class LocationDAO  {
 			l.setCity(lOld.getCity());
 			l.setDepartment(lOld.getDepartment());
 			l.setRegion(lOld.getRegion());
+			manager.getTransaction().commit();
 			return true;
 		}
 		return false;
+	}
+	
+	public Boolean ResetDestination() {
+		List<Location> allLocations = findAll();
+		manager.getTransaction().begin();
+		for(int i=0; i<allLocations.size(); ++i) {
+			Location l = allLocations.get(i);
+			l.setHasAdequateSport(false);
+			
+		}
+		manager.getTransaction().commit();
+		return true;
+	}
+	
+	public Boolean SetDestination(List<Location> locations) {
+		manager.getTransaction().begin();
+		for(int i=0; i<locations.size(); ++i) {
+			Location l = locations.get(i);
+			l.setHasAdequateSport(true);
+		}
+		manager.getTransaction().commit();
+		return true;
 	}
 
 }
