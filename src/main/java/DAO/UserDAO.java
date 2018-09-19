@@ -4,6 +4,8 @@ import java.util.List;
 import org.hibernate.mapping.Map;
 import javax.persistence.EntityManager;
 
+import fr.TAA.ProjetWeekEnd.Location;
+import fr.TAA.ProjetWeekEnd.Sport;
 import fr.TAA.ProjetWeekEnd.User;
 
 public class UserDAO {
@@ -77,6 +79,18 @@ public class UserDAO {
 
 	public Boolean exist(User u) {
 		return (findByID(u.getId()) != null);
+	}
+	
+	public List<Location> getFavoriteLocations(User u){
+		String query = "select u.Location from Location as l where u = :user"
+				+ "join fetch l.Weather from Weather";
+		return manager.createQuery(query).setParameter("user", u).getResultList();
+	}
+	
+	public List<Sport> getFavoriteSports(User u){
+		String query = "select u.Sport from Sport as s where u = :user"
+				+ "join fetch s.WeatherCondition from WeatherCondition";
+		return manager.createQuery(query).setParameter("user", u).getResultList();
 	}
 
 }
