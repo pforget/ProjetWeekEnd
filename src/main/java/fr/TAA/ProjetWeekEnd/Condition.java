@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 import fr.TAA.ProjetWeekEnd.Weather.Sunshine;
@@ -22,11 +23,12 @@ public class Condition implements Serializable {
 	private ArrayList<Sunshine> toleratedSunshine;
 	
 	@Id
+	@GeneratedValue
 	public int getId() {
 		return id;
 	}
 	
-	public void set(int identifier) {
+	public void setId(int identifier) {
 		this.id = identifier;
 	}
 	

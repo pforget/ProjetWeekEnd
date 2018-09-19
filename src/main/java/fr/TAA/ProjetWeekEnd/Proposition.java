@@ -3,7 +3,9 @@ package fr.TAA.ProjetWeekEnd;
 import java.io.Serializable;
 
 import javax.persistence.EmbeddedId;
+import javax.persistence.Entity;
 
+@Entity
 public class Proposition implements Serializable {
 	
 	@EmbeddedId

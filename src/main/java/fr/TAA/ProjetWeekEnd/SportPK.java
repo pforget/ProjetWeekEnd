@@ -1,10 +1,12 @@
 package fr.TAA.ProjetWeekEnd;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
 @Embeddable
-public class SportPK {
+public class SportPK implements Serializable{
 	
 	private String name;
 	private level level;

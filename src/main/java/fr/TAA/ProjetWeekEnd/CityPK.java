@@ -1,10 +1,14 @@
 package fr.TAA.ProjetWeekEnd;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
+import org.hibernate.mapping.Selectable;
+
 @Embeddable
-public class CityPK {
+public class CityPK implements Serializable {
 	public CityPK(String name, int postalCode) {
 		super();
 		this.name = name;

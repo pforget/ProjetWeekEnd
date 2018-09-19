@@ -13,6 +13,26 @@ public class App
 {
     public static void main( String[] args )
     {
+    	EntityManagerFactory factory = Persistence
+                .createEntityManagerFactory("mysql");
+        EntityManager manager = factory.createEntityManager();
+
+        EntityTransaction tx = manager.getTransaction();
+        tx.begin();
+        try {
+            
+            Location l = new Location();
+            manager.persist(l);
+        
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        tx.commit();
+        
+        manager.close();
+        factory.close();
+
+    	
     	/*EntityManagerFactory factory = Persistence
                 .createEntityManagerFactory("dev");
         EntityManager manager = factory.createEntityManager();
