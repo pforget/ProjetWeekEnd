@@ -61,6 +61,8 @@ public class SportService<level> {
 	
 	}
 
+    @GET
+    @Produces({MediaType.APPLICATION_JSON})
 	public List<Sport> findAll() {
 		return dao.findAll();
 	}
