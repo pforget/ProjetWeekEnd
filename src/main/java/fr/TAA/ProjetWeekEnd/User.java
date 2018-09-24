@@ -7,6 +7,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinTable;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
@@ -102,6 +104,10 @@ public class User implements Serializable {
 	}
 
 	@ManyToMany
+	  @JoinTable(name = "User_Proposition",
+      joinColumns = @JoinColumn(name = "User_id"),
+      inverseJoinColumns = @JoinColumn(name = "Proposition_id")
+  )
 	public List<Proposition> getPropositions() {
 		return propositions;
 	}
