@@ -63,7 +63,7 @@ public class Department implements Serializable {
 	}
 	
 	@Transient
-	@OneToMany
+	@OneToMany (mappedBy = "departmentID")
 	public List<City> getCities() {
 		return cities;
 	}

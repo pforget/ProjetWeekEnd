@@ -35,7 +35,7 @@ public class Region implements Serializable {
 	}
 
 	@Transient
-	@OneToMany
+	@OneToMany  (mappedBy = "regionID")
 	public List<Department> getDepartments() {
 		return departments;
 	}
