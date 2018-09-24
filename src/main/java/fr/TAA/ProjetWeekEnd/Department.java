@@ -7,6 +7,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Transient;
 
 
@@ -62,6 +63,7 @@ public class Department implements Serializable {
 	}
 	
 	@Transient
+	@OneToMany
 	public List<City> getCities() {
 		return cities;
 	}

@@ -13,14 +13,11 @@ import javax.persistence.OneToMany;
 @Entity
 public class Location implements Serializable {
 	
-	public Location(int id, City city, Department department, Region region, Boolean hasAdequateSport, List<Sport> PraticableSports) {
-		super();
+	public Location(int id, City city, Department department, Region region, List<Sport> PraticableSports) {
 		this.id = id;
 		this.city = city;
 		this.department = department;
-		this.region = region;
-		this.hasAdequateSport = hasAdequateSport;
-		
+		this.region = region;		
 	}
 
 	private int id;

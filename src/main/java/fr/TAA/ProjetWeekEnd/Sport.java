@@ -1,9 +1,11 @@
 package fr.TAA.ProjetWeekEnd;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
 
@@ -18,12 +20,13 @@ public class Sport implements Serializable {
 //    private boolean needwater;
 //    private boolean needmountain;
     private Condition WeatherCondition;
+    private List<User> users;
     
     public Sport() {
         
     }
     
-    public Sport(String name, level level, boolean needwater, boolean needmountain, Condition weatherCondition) {
+    public Sport(String name, level level, Condition weatherCondition) {
         this.sportPK = new SportPK(name, level);
 //        this.needwater = needwater;
 //        this.needmountain = needmountain;
@@ -74,8 +77,13 @@ public class Sport implements Serializable {
     public boolean isPracticable(Weather weather) {
         return WeatherCondition.isFulfilled(weather);
     }
-    
-    
-    
 
+    @ManyToMany (mappedBy = "favoriteSports")
+	public List<User> getUsers() {
+		return users;
+	}
+
+	public void setUsers(List<User> users) {
+		this.users = users;
+	}
 }

@@ -58,7 +58,7 @@ public class Proposition implements Serializable {
 		this.propositionPK = propositionPK;
 	}
 
-	@ManyToMany (mappedBy = "Users")
+	@ManyToMany (mappedBy = "propositions")
 	public List<User> getUsers() {
 		return users;
 	}
