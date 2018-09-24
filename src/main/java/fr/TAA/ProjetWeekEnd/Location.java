@@ -32,7 +32,7 @@ public class Location implements Serializable {
 	
 //	private Boolean hasAdequateSport;
 	
-	private List<User> users;
+//	private List<User> users;
 	
 	public Location() {
 		
@@ -92,13 +92,13 @@ public class Location implements Serializable {
 		this.hasAdequateSport = hasAdequateSport;
 	}*/
 
-	@ManyToMany (mappedBy ="favoriteLocations")
+/*	@ManyToMany ( targetEntity=User.class, mappedBy ="favoriteLocations")
 	public List<User> getUsers() {
 		return users;
 	}
 
 	public void setUsers(List<User> users) {
 		this.users = users;
-	}
+	}*/
 }
 

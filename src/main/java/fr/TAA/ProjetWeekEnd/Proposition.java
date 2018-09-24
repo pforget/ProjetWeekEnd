@@ -15,7 +15,7 @@ public class Proposition implements Serializable {
 	
 	private boolean available;
 	
-	private List<User> users;
+	//private List<User> users;
 	
 	public Proposition() {
 		
@@ -58,12 +58,12 @@ public class Proposition implements Serializable {
 		this.propositionPK = propositionPK;
 	}
 
-	@ManyToMany (mappedBy = "propositions")
+/*	@ManyToMany (targetEntity=User.class, mappedBy = "propositions")
 	public List<User> getUsers() {
 		return users;
 	}
 
 	public void setUsers(List<User> users) {
 		this.users = users;
-	}
+	}*/
 }

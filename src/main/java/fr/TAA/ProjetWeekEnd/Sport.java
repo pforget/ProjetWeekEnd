@@ -20,7 +20,7 @@ public class Sport implements Serializable {
 //    private boolean needwater;
 //    private boolean needmountain;
     private Condition WeatherCondition;
-    private List<User> users;
+ //   private List<User> users;
     
     public Sport() {
         
@@ -78,12 +78,12 @@ public class Sport implements Serializable {
         return WeatherCondition.isFulfilled(weather);
     }
 
-    @ManyToMany (mappedBy = "favoriteSports")
+   /* @ManyToMany (mappedBy = "favoriteSports")
 	public List<User> getUsers() {
 		return users;
 	}
 
 	public void setUsers(List<User> users) {
 		this.users = users;
-	}
+	}*/
 }

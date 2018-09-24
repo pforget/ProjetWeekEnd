@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinTable;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinColumns;
 import javax.persistence.ManyToMany;
 
 @Entity
@@ -85,10 +86,10 @@ public class User implements Serializable {
 
 	
 	@ManyToMany
-	 @JoinTable(name = "User_Sport",
+/*	 @JoinTable(name = "User_Sport",
      joinColumns = @JoinColumn(name = "User_id"),
      inverseJoinColumns = @JoinColumn(name = "Sport_id")
-	 )
+	 )*/
 	public List<Sport> getFavoriteSports() {
 		return favoriteSports;
 	}
@@ -98,10 +99,10 @@ public class User implements Serializable {
 	}
 
 	@ManyToMany
-	 @JoinTable(name = "User_Location",
+/*	 @JoinTable(name = "User_Location",
      joinColumns = @JoinColumn(name = "User_id"),
      inverseJoinColumns = @JoinColumn(name = "Location_id")
-	 )
+	 )*/
 	public List<Location> getFavoriteLocations() {
 		return favoriteLocations;
 	}
@@ -111,10 +112,12 @@ public class User implements Serializable {
 	}
 
 	@ManyToMany
-	  @JoinTable(name = "User_Proposition",
+/*	  @JoinTable(name = "User_Proposition",
       joinColumns = @JoinColumn(name = "User_id"),
-      inverseJoinColumns = @JoinColumn(name = "Proposition_id")
-  )
+      inverseJoinColumns = {
+		  @JoinColumn(name = "Proposition_sport"), 
+		  @JoinColumn(name = "Proposition_location")}
+  )*/
 	public List<Proposition> getPropositions() {
 		return propositions;
 	}
