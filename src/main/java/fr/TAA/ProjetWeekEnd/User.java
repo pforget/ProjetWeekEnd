@@ -85,7 +85,11 @@ public class User implements Serializable {
 
 
 	
-	@OneToMany
+	@ManyToMany
+	 @JoinTable(name = "User_Sport",
+     joinColumns = @JoinColumn(name = "User_id"),
+     inverseJoinColumns = @JoinColumn(name = "Sport_id")
+	 )
 	public List<Sport> getFavoriteSports() {
 		return favoriteSports;
 	}
@@ -94,7 +98,11 @@ public class User implements Serializable {
 		this.favoriteSports = favoriteSports;
 	}
 
-	@OneToMany
+	@ManyToMany
+	 @JoinTable(name = "User_Location",
+     joinColumns = @JoinColumn(name = "User_id"),
+     inverseJoinColumns = @JoinColumn(name = "Location_id")
+	 )
 	public List<Location> getFavoriteLocations() {
 		return favoriteLocations;
 	}

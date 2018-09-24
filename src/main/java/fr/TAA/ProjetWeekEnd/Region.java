@@ -6,6 +6,7 @@ import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Transient;
 
 @Entity
@@ -34,6 +35,7 @@ public class Region implements Serializable {
 	}
 
 	@Transient
+	@OneToMany
 	public List<Department> getDepartments() {
 		return departments;
 	}

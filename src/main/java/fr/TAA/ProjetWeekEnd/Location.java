@@ -13,7 +13,7 @@ import javax.persistence.OneToMany;
 @Entity
 public class Location implements Serializable {
 	
-	public Location(int id, City city, Department department, Region region, List<Sport> PraticableSports) {
+	public Location(int id, City city, Department department, Region region) {
 		this.id = id;
 		this.city = city;
 		this.department = department;
@@ -22,7 +22,6 @@ public class Location implements Serializable {
 
 	private int id;
 
-	private List<Sport> PraticableSports;
 	private City city;
 	
 	private Department department;
@@ -31,9 +30,9 @@ public class Location implements Serializable {
 	
 	private Weather weather;
 	
-	private Boolean hasAdequateSport;
+//	private Boolean hasAdequateSport;
 	
-	
+	private List<User> users;
 	
 	public Location() {
 		
@@ -47,15 +46,6 @@ public class Location implements Serializable {
 
 	public void setId(int id) {
 		this.id = id;
-	}
-
-	@ManyToMany
-	public List<Sport> getPraticableSports() {
-		return PraticableSports;
-	}
-
-	public void setPraticableSports(List<Sport> praticableSports) {
-		PraticableSports = praticableSports;
 	}
 	
 	@ManyToOne
@@ -94,12 +84,21 @@ public class Location implements Serializable {
 		this.weather = weather;
 	}
 
-	public Boolean getHasAdequateSport() {
+/*	public Boolean getHasAdequateSport() {
 		return hasAdequateSport;
 	}
 
 	public void setHasAdequateSport(Boolean hasAdequateSport) {
 		this.hasAdequateSport = hasAdequateSport;
+	}*/
+
+	@ManyToMany (mappedBy ="favoriteLocations")
+	public List<User> getUsers() {
+		return users;
+	}
+
+	public void setUsers(List<User> users) {
+		this.users = users;
 	}
 }
 
