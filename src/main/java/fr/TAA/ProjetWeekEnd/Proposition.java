@@ -1,10 +1,11 @@
 package fr.TAA.ProjetWeekEnd;
 
 import java.io.Serializable;
+import java.util.List;
 
-import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
 
 @Entity
 public class Proposition implements Serializable {
@@ -13,6 +14,8 @@ public class Proposition implements Serializable {
 	private PropositionPK propositionPK;
 	
 	private boolean available;
+	
+	private List<User> users;
 	
 	public Proposition() {
 		
@@ -45,5 +48,22 @@ public class Proposition implements Serializable {
 
 	public void setAvailable(boolean available) {
 		this.available = available;
+	}
+
+	public PropositionPK getPropositionPK() {
+		return propositionPK;
+	}
+
+	public void setPropositionPK(PropositionPK propositionPK) {
+		this.propositionPK = propositionPK;
+	}
+
+	@ManyToMany (mappedBy = "Users")
+	public List<User> getUsers() {
+		return users;
+	}
+
+	public void setUsers(List<User> users) {
+		this.users = users;
 	}
 }
