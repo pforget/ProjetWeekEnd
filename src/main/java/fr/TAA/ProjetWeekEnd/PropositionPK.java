@@ -38,8 +38,4 @@ public class PropositionPK implements Serializable{
 	public void setLocation(Location location) {
 		this.location = location;
 	}
-	
-	
-	
-
 }

@@ -18,7 +18,7 @@ public class City implements Serializable {
 	@EmbeddedId
 	private CityPK cityPK;
 
-	@ManyToOne
+	
 	private Department departmentID;
 
 	public City() {
@@ -48,7 +48,8 @@ public class City implements Serializable {
 	public void setPostalCode(int postalCode) {
 		cityPK.setPostalCode(postalCode);
 	}
-
+	
+	@ManyToOne
 	public Department getDepartmentID() {
 		return departmentID;
 	}

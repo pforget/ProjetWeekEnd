@@ -31,7 +31,7 @@ public class Department implements Serializable {
 	
 	private Region regionId;
 	
-	@Transient
+	
 	private List<City> cities;
 
 	@Id

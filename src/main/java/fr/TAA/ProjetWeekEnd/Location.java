@@ -24,15 +24,6 @@ public class Location implements Serializable {
 	}
 
 	private int id;
-	
-	@ManyToMany
-	public List<Sport> getPraticableSports() {
-		return PraticableSports;
-	}
-
-	public void setPraticableSports(List<Sport> praticableSports) {
-		PraticableSports = praticableSports;
-	}
 
 	private List<Sport> PraticableSports;
 	private City city;
@@ -61,6 +52,15 @@ public class Location implements Serializable {
 		this.id = id;
 	}
 
+	@ManyToMany
+	public List<Sport> getPraticableSports() {
+		return PraticableSports;
+	}
+
+	public void setPraticableSports(List<Sport> praticableSports) {
+		PraticableSports = praticableSports;
+	}
+	
 	@ManyToOne
 	public City getCity() {
 		return city;
@@ -104,9 +104,5 @@ public class Location implements Serializable {
 	public void setHasAdequateSport(Boolean hasAdequateSport) {
 		this.hasAdequateSport = hasAdequateSport;
 	}
-
-	
-
-	
 }
 

@@ -3,6 +3,7 @@ package fr.TAA.ProjetWeekEnd;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Transient;
@@ -11,7 +12,6 @@ import javax.persistence.Transient;
 public class Region implements Serializable {	
 	
 	public Region(String name, List<Department> departments) {
-		super();
 		this.name = name;
 		this.departments = departments;
 	}
@@ -22,7 +22,6 @@ public class Region implements Serializable {
 
 	private String name;
 	
-	@Transient
 	private List<Department> departments;
 	
 	@Id

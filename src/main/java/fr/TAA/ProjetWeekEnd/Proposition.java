@@ -2,6 +2,7 @@ package fr.TAA.ProjetWeekEnd;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 
@@ -45,7 +46,4 @@ public class Proposition implements Serializable {
 	public void setAvailable(boolean available) {
 		this.available = available;
 	}
-	
-	
-
 }
